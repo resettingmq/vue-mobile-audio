@@ -38,9 +38,12 @@ export default {
     mounted(){
         this.audio=new Audio()
         this.audio.src=this.src
-        this.audio.addEventListener('canplaythrough',()=>{
+        this.audio.addEventListener('loadedmetadata',()=>{
             this.duration=this.format(this.audio.duration)
-        })
+        });
+        if (this.audio.readyState > 0) {
+            this.duration=this.format(this.audio.duration)
+        }
         this.audio.onplay=()=>{
             this.animate=true
             this.timer=setInterval(() => {
