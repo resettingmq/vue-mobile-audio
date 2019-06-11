@@ -74,16 +74,15 @@ export default {
         format(s){
             var t='';
             if(s > -1){
-                var min = Math.floor(s/60) % 60;
+                if (s > 59) {
+                    s = 59;
+                }
                 var sec = s % 60;
 
-                if(min < 10){t += "0";}
-                t += min + "'";
                 if(sec < 10){t += "0";}
                 t += sec.toFixed();
                 t += '"';
             }
-            t=t.replace('.','\"')
             return t;
         },
     }
