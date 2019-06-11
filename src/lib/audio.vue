@@ -76,11 +76,12 @@ export default {
         },
         format(s){
             var t='';
+            let duration = s;
             if(s > -1){
                 if (s > 59) {
-                    s = 59;
+                    duration = 59;
                 }
-                var sec = s % 60;
+                var sec = duration % 60;
 
                 if(sec < 10){t += "0";}
                 t += sec.toFixed();
